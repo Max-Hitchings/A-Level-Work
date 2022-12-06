@@ -5,10 +5,13 @@ class Password():
         self.errors = []
 
     def isValid(self):
-        if self.checkCase() and self.checkLen() and self.checkPatterens():
+        case = self.checkCase()
+        le = self.checkLen()
+        pattern = self.checkPatterens()
+        if case and le and pattern:
             print("all good")
-        else:
-            self.printErrors()
+            return
+        self.printErrors()
 
     def checkCase(self):
         digit, lower = False, False
@@ -35,19 +38,6 @@ class Password():
                     return False
 
         return True
-                # print(f"{self.password[i:delta]} ± {self.password[delta:(delta*2)-i]}")
-                # pass
-                # delta += 1
-                # if i+delta < len(self.password):
-                #     if self.password[i:i+delta] == self.password[i+delta:i+(delta*2)]:
-                #         print(f"{self.password[i:i+delta]} == {self.password[i+delta:i+(delta*2)]}")
-                #         return False
-                #     else:
-                #         print(f"{self.password[i:i+delta]} != {self.password[i+delta:i+(delta*2)]}")
-                # leftover = len(self.password) - i
-                # for j in range(leftover):
-                #     if char == self.password[i+1]:
-                #         return False
 
     def checkLen(self):
         if len(self.password) >= 5 and len(self.password) <= 12:
