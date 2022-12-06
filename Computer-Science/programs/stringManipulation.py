@@ -1,8 +1,7 @@
 string = input("Eter the stuff")
 
 # Good method:
-if string == string[::-1]:
-    print("palindrome thingy")
+print("palindrome thingy") if string == string[::-1] else print("Nope")
 
 # Stupid method:
 reverse = ""
