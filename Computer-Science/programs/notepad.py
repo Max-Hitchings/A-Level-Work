@@ -35,10 +35,10 @@ class Notepad():
                 people.append(Person(*self.getPersonData()))
                 f.write(f"{people[i].name}, {people[i].hobby}, {people[i].age}, {people[i].subject}")
 
-    def load(self):
+    def parse(self, fName):
         self.people = []
 
-        with open("people.txt", "r") as f:
+        with open(fName, "r") as f:
             for line in f.read().split("\n"):
                 self.people.append(self.createPerson(line.split(",")))
 
@@ -55,5 +55,5 @@ class Notepad():
 # write()
 n = Notepad()
 
-n.load()
+n.parse("people.txt")
 n.search()
