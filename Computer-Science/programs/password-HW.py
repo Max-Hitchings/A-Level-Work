@@ -1,4 +1,4 @@
-class Password():
+class Password:
     def __init__(self, password):
         self.password = password
         self.valid = False
@@ -32,15 +32,16 @@ class Password():
 
     def checkPatterens(self):
         for i in range(len(self.password)):
-            for delta in range(i+1, len(self.password)+1):
-                if self.password[i:delta] == self.password[delta:(delta*2)-i]:
-                    self.addError(f"'{self.password[i:delta]}' is immediately followed by '{self.password[delta:(delta*2)-i]}'")
+            for delta in range(i + 1, len(self.password) + 1):
+                if self.password[i:delta] == self.password[delta:(delta * 2) - i]:
+                    self.addError(
+                        f"'{self.password[i:delta]}' is immediately followed by '{self.password[delta:(delta * 2) - i]}'")
                     return False
 
         return True
 
     def checkLen(self):
-        if len(self.password) >= 5 and len(self.password) <= 12:
+        if 5 <= len(self.password) <= 12:
             return True
         self.addError("Too short")
         return False
@@ -51,7 +52,7 @@ class Password():
     def printErrors(self):
         print("Rejected because: ")
         for error in self.errors:
-            print("    ",error)
+            print("    ", error)
 
 
 password = Password(input("enter a new password"))
